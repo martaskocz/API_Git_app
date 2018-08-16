@@ -54,8 +54,8 @@ export default class Home extends Component {
                     Authorization: 'token ' + token
                 }
             })
-            .then(response => {console.log(response.data);})
-            //.then(res => this.setState({username: res.data.name}))
+            .then(res => {console.log(response.data);})
+            .then(res => this.setState({username: res.data.name}))
     }
 
     render () {
