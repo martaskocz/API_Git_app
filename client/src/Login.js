@@ -16,7 +16,7 @@ const Login = () => {
     return (
     <GitHubLogin clientId="c5360afa40e2869bcb91" //my ClientID from GitHub
                  //redirectUri="http://localhost:8080/auth/github/callback"
-                 redirectUri="https://login-git-app.herokuapp.com"
+                 redirectUri="https://login-git-app.herokuapp.com/auth/github/callback"
                   //user will be redirected here e.g. http://localhost:8080/users/
                  onSuccess={onSuccess}
                  onFailure={onFailure}
