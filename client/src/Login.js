@@ -20,7 +20,7 @@ const Login = () => {
                  onSuccess={onSuccess}
                  onFailure={onFailure}
     />*/
-    <a href="https://github.com/login/oauth/authorize?client_id=c5360afa40e2869bcb91&redirect_uri=http://localhost:8080/auth/github/callback">Login with github</a>
+    <a href="https://github.com/login/oauth/authorize?client_id=c5360afa40e2869bcb91&redirect_uri=https://login-git-app.herokuapp.com/auth/github/callback">Login with github</a>
     );
 };
 

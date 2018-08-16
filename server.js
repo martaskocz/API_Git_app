@@ -12,7 +12,7 @@ const clientSecret = '4a0376a682cfa87253dd9f1eb328b7ecf2da10a0';
 passport.use(new GitHubStrategy({
         clientID: "c5360afa40e2869bcb91",
         clientSecret: "4a0376a682cfa87253dd9f1eb328b7ecf2da10a0",
-        callbackURL: "http://localhost:8080/auth/github/callback"
+        callbackURL: "https://login-git-app.herokuapp.com/auth/github/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         if (profile) {
