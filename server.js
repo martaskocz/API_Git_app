@@ -74,8 +74,8 @@ app.get('/auth/github/callback', (req,res) => {
         // the response body
         const accessToken = response.data.access_token;
         // redirect the user to the welcome page, along with the access token
-        //res.redirect(`/home?access_token=${accessToken}`)
-        res.redirect('/home')
+        res.redirect(`/home?access_token=${accessToken}`)
+        //res.redirect('/home')
     })
 });
 

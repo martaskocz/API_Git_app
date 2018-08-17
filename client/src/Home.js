@@ -36,7 +36,8 @@ export default class Home extends Component {
     constructor () {
         super();
         this.state = {
-            username: ''
+            name: '',
+            login: ''
         };
     }
 
@@ -54,14 +55,61 @@ export default class Home extends Component {
                 }
             })
             //.then(res => res.json())
-            .then(response => this.setState({username: response.data.name}))
+            .then(response => this.setState({
+                login: response.data.login,
+                name: response.data.name
+            }))
+    }
+
+    renderStat(stat) {
+        return (
+            <li key={stat.name} className="user-info__stat">
+                <Link to={stat.url}>
+                    <p className="user-info__stat-value">{stat.value}</p>
+                    <p className="user-info__stat-name">{stat.name}</p>
+                </Link>
+            </li>
+        );
     }
 
     render () {
+        const user = this.state.login;
+        const stats = [
+            {
+                name: 'Public Repos',
+                value: user.public_repos,
+                url: `/user/${this.props.params.username}/repos`
+            },
+            {
+                name: 'Followers',
+                value: user.followers,
+                url: `/user/${this.props.params.username}/followers`
+            },
+            {
+                name: 'Following',
+                value: user.following,
+                url: `/user/${this.props.params.username}/following`
+            }
+        ];
+
         return (
             <div className='button__container'>
-                <p>Hello {this.state.username}</p>
+                <p>Hello {this.state.name}</p>
+                <div className="user-page">
+                    <div className="user-info">
+                        <Link className="user-info__text" to={`/user/${user.login}`}>
+                            <img className="user-info__avatar" src={user.avatar_url} alt={`${user.login} avatar`}/>
+                            <h2 className="user-info__title">{user.login} ({user.name})</h2>
+                            <p className="user-info__bio">{user.bio}</p>
+                        </Link>
+
+                        <ul className="user-info__stats">
+                            {stats.map(this.renderStat)}
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         )
     }
 }
