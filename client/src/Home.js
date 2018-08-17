@@ -78,17 +78,17 @@ export default class Home extends Component {
             {
                 name: 'Public Repos',
                 value: user.public_repos,
-                url: `/user/${this.props.params.username}/repos`
+                url: `/user/${user}/repos`
             },
             {
                 name: 'Followers',
                 value: user.followers,
-                url: `/user/${this.props.params.username}/followers`
+                url: `/user/${user}/followers`
             },
             {
                 name: 'Following',
                 value: user.following,
-                url: `/user/${this.props.params.username}/following`
+                url: `/user/${user}/following`
             }
         ];
 
