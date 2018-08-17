@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router';
 
 /*const Home = () => {
     return (
@@ -35,10 +36,7 @@ export default Home;*/
 export default class Home extends Component {
     constructor () {
         super();
-        this.state = {
-            name: '',
-            login: ''
-        };
+        this.state = {};
     }
 
     componentDidMount() {
@@ -54,11 +52,20 @@ export default class Home extends Component {
                     Authorization: 'token ' + token
                 }
             })
-            //.then(res => res.json())
-            .then(response => this.setState({
+            /*.then(response => this.setState({
                 login: response.data.login,
                 name: response.data.name
-            }))
+            }))*/
+            .then(response => response.json())
+            .then(
+                user => {
+                    // How can we use `this` inside a callback without binding it??
+                    // Make sure you understand this fundamental difference with arrow functions!!!
+                    this.setState({
+                        user: user
+                    });
+                }
+            );
     }
 
     renderStat(stat) {
@@ -73,22 +80,22 @@ export default class Home extends Component {
     }
 
     render () {
-        const user = this.state.login;
+        const user = this.state.user;
         const stats = [
             {
                 name: 'Public Repos',
                 value: user.public_repos,
-                url: `/user/${user}/repos`
+                url: `/user/${this.props.params.username}/repos`
             },
             {
                 name: 'Followers',
                 value: user.followers,
-                url: `/user/${user}/followers`
+                url: `/user/${this.props.params.username}/followers`
             },
             {
                 name: 'Following',
                 value: user.following,
-                url: `/user/${user}/following`
+                url: `/user/${this.props.params.username}/following`
             }
         ];
 
