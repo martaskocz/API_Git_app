@@ -37,7 +37,8 @@ export default class Home extends Component {
     constructor () {
         super();
         this.state = {
-            user: ''
+            user: '',
+            public_repos: ''
         };
     }
 
@@ -64,7 +65,8 @@ export default class Home extends Component {
                     // How can we use `this` inside a callback without binding it??
                     // Make sure you understand this fundamental difference with arrow functions!!!
                     this.setState({
-                        user: response.data.login
+                        user: response.data.login,
+                        public_repos: response.data.public_repos
                     });
                 }
             );
@@ -83,10 +85,11 @@ export default class Home extends Component {
 
     render () {
         const user = this.state.user;
+        const public_repos = this.state.public_repos;
         const stat = [
             {
                 name: 'Public Repos',
-                value: user.public_repos,
+                value: {public_repos},
                 url: `/user/${user}/repos`
             }
         ];
