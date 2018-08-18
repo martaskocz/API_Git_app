@@ -83,28 +83,21 @@ export default class Home extends Component {
 
     render () {
         const user = this.state.user;
-        /*const stats = [
+        const stat = [
             {
                 name: 'Public Repos',
-                value: public_repos,
                 value: user.public_repos,
-                url: `/user/${this.props.params.username}/repos`
-            },
-            {
-                name: 'Followers',
-                //value: user.followers,
-                url: `/user/${this.props.params.username}/followers`
-            },
-            {
-                name: 'Following',
-                //value: user.following,
-                url: `/user/${this.props.params.username}/following`
+                url: `/user/${user}/repos`
             }
-        ];*/
+        ];
 
         return (
             <div className='button__container'>
                 <p>Hello {user}</p>
+                <Link to={stat.url}>
+                    <p className="user-info__stat-value">{stat.value}</p>
+                    <p className="user-info__stat-name">{stat.name}</p>
+                </Link>
             </div>
         )
     }
