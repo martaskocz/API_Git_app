@@ -7,12 +7,13 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 const clientID = 'c5360afa40e2869bcb91';
-const clientSecret = 'c78b8d67d2ba6a4951e34bdeb8abfed36064336f';
+const clientSecret = 'a738765ecf489aa4395e2322664c2ab9156e0ebe';
 
 passport.use(new GitHubStrategy({
         clientID: "c5360afa40e2869bcb91",
-        clientSecret: "c78b8d67d2ba6a4951e34bdeb8abfed36064336f",
+        clientSecret: "a738765ecf489aa4395e2322664c2ab9156e0ebe",
         callbackURL: "https://login-git-app.herokuapp.com/auth/github/callback"
+        //callbackURL: "http://localhost:8080/auth/github/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         if (profile) {

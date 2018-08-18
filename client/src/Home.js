@@ -38,7 +38,7 @@ export default class Home extends Component {
         super();
         this.state = {
             user: '',
-            public_repos: ''
+            publicrepos: 0
         };
     }
 
@@ -64,9 +64,10 @@ export default class Home extends Component {
                 response => {
                     // How can we use `this` inside a callback without binding it??
                     // Make sure you understand this fundamental difference with arrow functions!!!
+                    console.log(response);
                     this.setState({
                         user: response.data.login,
-                        public_repos: response.data.public_repos
+                        publicrepos: response.data.public_repos
                     });
                 }
             );
@@ -85,22 +86,19 @@ export default class Home extends Component {
 
     render () {
         const user = this.state.user;
-        const public_repos = this.state.public_repos;
-        const stat = [
+        const publicrepos = this.state.publicrepos;
+        /*const stat = [
             {
                 name: 'Public Repos',
-                value: {public_repos},
+                value: {publicrepos},
                 url: `/user/${user}/repos`
             }
-        ];
+        ];*/
 
         return (
             <div className='button__container'>
                 <p>Hello {user}</p>
-                <Link to={stat.url}>
-                    <p className="user-info__stat-value">{stat.value}</p>
-                    <p className="user-info__stat-name">{stat.name}</p>
-                </Link>
+                <p>You have a {publicrepos} public repositories</p>
             </div>
         )
     }
