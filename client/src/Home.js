@@ -81,28 +81,29 @@ export default class Home extends Component {
 
     render () {
         const user = this.state.user;
-        const stats = [
+        /*const stats = [
             {
                 name: 'Public Repos',
+                value: public_repos,
                 value: user.public_repos,
                 url: `/user/${this.props.params.username}/repos`
             },
             {
                 name: 'Followers',
-                value: user.followers,
+                //value: user.followers,
                 url: `/user/${this.props.params.username}/followers`
             },
             {
                 name: 'Following',
-                value: user.following,
+                //value: user.following,
                 url: `/user/${this.props.params.username}/following`
             }
-        ];
+        ];*/
 
         return (
             <div className='button__container'>
-                <p>Hello {this.state.name}</p>
-                <div className="user-page">
+                <p>Hello {user}</p>
+                /*<div className="user-page">
                     <div className="user-info">
                         <Link className="user-info__text" to={`/user/${user.login}`}>
                             <img className="user-info__avatar" src={user.avatar_url} alt={`${user.login} avatar`}/>
@@ -114,7 +115,7 @@ export default class Home extends Component {
                             {stats.map(this.renderStat)}
                         </ul>
                     </div>
-                </div>
+                </div>*/
             </div>
 
         )
