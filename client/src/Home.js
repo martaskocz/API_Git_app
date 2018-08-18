@@ -105,21 +105,7 @@ export default class Home extends Component {
         return (
             <div className='button__container'>
                 <p>Hello {user}</p>
-                /*<div className="user-page">
-                    <div className="user-info">
-                        <Link className="user-info__text" to={`/user/${user.login}`}>
-                            <img className="user-info__avatar" src={user.avatar_url} alt={`${user.login} avatar`}/>
-                            <h2 className="user-info__title">{user.login} ({user.name})</h2>
-                            <p className="user-info__bio">{user.bio}</p>
-                        </Link>
-
-                        <ul className="user-info__stats">
-                            {stats.map(this.renderStat)}
-                        </ul>
-                    </div>
-                </div>*/
             </div>
-
         )
     }
 }
