@@ -58,11 +58,11 @@ export default class Home extends Component {
             }))*/
             //.then(response => response.json())
             .then(
-                user => {
+                response => {
                     // How can we use `this` inside a callback without binding it??
                     // Make sure you understand this fundamental difference with arrow functions!!!
                     this.setState({
-                        user: login
+                        user: response.data.login
                     });
                 }
             );
