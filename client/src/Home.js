@@ -70,7 +70,7 @@ export default class Home extends Component {
             );
     }
 
-    renderStat(stat) {
+    /*renderStat(stat) {
         return (
             <li key={stat.name} className="user-info__stat">
                 <Link to={stat.url}>
@@ -79,7 +79,7 @@ export default class Home extends Component {
                 </Link>
             </li>
         );
-    }
+    }*/
 
     render () {
         const user = this.state.user;
