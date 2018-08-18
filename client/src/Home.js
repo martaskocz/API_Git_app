@@ -36,7 +36,9 @@ export default Home;*/
 export default class Home extends Component {
     constructor () {
         super();
-        this.state = {};
+        this.state = {
+            user: ''
+        };
     }
 
     componentDidMount() {
