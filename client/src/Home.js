@@ -34,11 +34,12 @@ export default Home;*/
 
 //solution nr3
 export default class Home extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             user: '',
-            publicrepos: 0
+            publicrepos: 0,
         };
     }
 
@@ -60,17 +61,22 @@ export default class Home extends Component {
                 name: response.data.name
             }))*/
             //.then(response => response.json())
-            .then(
-                response => {
-                    // How can we use `this` inside a callback without binding it??
-                    // Make sure you understand this fundamental difference with arrow functions!!!
-                    console.log(response);
-                    this.setState({
-                        user: response.data.login,
-                        publicrepos: response.data.public_repos
-                    });
-                }
-            );
+        .then(
+            response => {
+                // How can we use `this` inside a callback without binding it??
+                // Make sure you understand this fundamental difference with arrow functions!!!
+                console.log(response);
+                this.setState({
+                    user: response.data.login,
+                    publicrepos: response.data.public_repos
+                });
+            }
+        );
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        history.push('/user/{user}')
     }
 
     /*renderStat(stat) {
@@ -99,6 +105,7 @@ export default class Home extends Component {
             <div className='button__container'>
                 <p>Hello {user}</p>
                 <p>You have a {publicrepos} public repositories</p>
+                <button onSubmit={this.handleSubmit}>Show me repos</button>
             </div>
         )
     }
