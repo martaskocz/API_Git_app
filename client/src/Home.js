@@ -44,8 +44,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        //axios.get('https://api.github.com/users/martasobstyl')
-        //    .then(response => this.setState({username: response.data.name}))
         const query = window.location.search.substring(1);
         const token = query.split('access_token=')[1];
 
@@ -68,7 +66,8 @@ export default class Home extends Component {
                 console.log(response);
                 this.setState({
                     user: response.data.login,
-                    publicrepos: response.data.public_repos
+                    publicrepos: response.data.public_repos,
+                    avatar: response.data.avatar_url
                 });
             }
         );
@@ -93,6 +92,7 @@ export default class Home extends Component {
     render () {
         const user = this.state.user;
         const publicrepos = this.state.publicrepos;
+        const avatar = this.state.avatar;
         /*const stat = [
             {
                 name: 'Public Repos',
@@ -105,6 +105,7 @@ export default class Home extends Component {
             <div className='button__container'>
                 <p>Hello {user}</p>
                 <p>You have a {publicrepos} public repositories</p>
+                <img src={avatar} alt="" />
                 <button onSubmit={this.handleSubmit}>Show me repos</button>
             </div>
         )
