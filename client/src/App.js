@@ -17,7 +17,7 @@ const Apps = () => (
 class App extends Component {
   render() {
     return (
-        <BrowserRouter history={browserHistory}>
+        <BrowserRouter>
           <Apps/>
         </BrowserRouter>
     );
