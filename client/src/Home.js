@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
+import Repositories from './Repositories';
 
 /*const Home = () => {
     return (
@@ -40,6 +41,7 @@ export default class Home extends Component {
         this.state = {
             user: '',
             publicrepos: 0,
+            showRepos: false
         };
     }
 
@@ -73,9 +75,10 @@ export default class Home extends Component {
         );
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        history.push('/user/{user}')
+    handleSubmit() {
+        this.setState({
+            showRepos: true
+        });
     }
 
     /*renderStat(stat) {
@@ -106,7 +109,8 @@ export default class Home extends Component {
                 <p>Hello {user}</p>
                 <p>You have a {publicrepos} public repositories</p>
                 <img src={avatar} alt="" />
-                <button onSubmit={this.handleSubmit.bind(this)}>Show me repos</button>
+                <button onClick={this.handleSubmit}>Show me repos</button>
+                {this.state.showRepos ? <Repositories/> : null}
             </div>
         )
     }
