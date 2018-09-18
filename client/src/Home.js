@@ -106,7 +106,7 @@ export default class Home extends Component {
                 <p>Hello {user}</p>
                 <p>You have a {publicrepos} public repositories</p>
                 <img src={avatar} alt="" />
-                <button onSubmit={this.handleSubmit}>Show me repos</button>
+                <button onSubmit={this.handleSubmit.bind(this)}>Show me repos</button>
             </div>
         )
     }
