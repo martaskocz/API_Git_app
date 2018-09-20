@@ -21,19 +21,11 @@ export default class Repositories extends Component {
                     Authorization: 'token ' + token
                 }
             })
-            /*.then(
+            .then(
                 response => {
                     console.log(response);
                     this.setState({
-                        language: response.data.language
-                    });
-                }
-            );*/
-            .then(response => response.json())
-            .then(
-                repo => {
-                    this.setState({
-                        repo: repo
+                        repo: response.data
                     });
                 }
             );
