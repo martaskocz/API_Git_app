@@ -77,10 +77,17 @@ export default class Home extends Component {
         );
     }
 
-    handleSubmit() {
-        this.setState({
-            showRepos: true
-        });
+    handleSubmit(showRepos) {
+        if (!showRepos) {
+            this.setState({
+                showRepos: true
+            });
+        }
+        else {
+            this.setState({
+                showRepos: false
+            });
+        }
     }
 
     /*renderStat(stat) {
@@ -111,7 +118,7 @@ export default class Home extends Component {
                 <p>Hello {user}</p>
                 <p>You have a {publicrepos} public repositories</p>
                 <img src={avatar} alt="" />
-                <button onClick={this.handleSubmit}>Show me repos</button>
+                <button onClick={this.handleSubmit}>Show / Hide repos</button>
                 {this.state.showRepos ? <Repositories repos_url={this.state.repos_url}/> : null}
             </div>
         )
