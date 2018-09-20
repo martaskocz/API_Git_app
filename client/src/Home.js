@@ -77,8 +77,8 @@ export default class Home extends Component {
         );
     }
 
-    handleSubmit(showRepos) {
-        if (!showRepos) {
+    handleSubmit() {
+        if (!this.state.showRepos) {
             this.setState({
                 showRepos: true
             });
