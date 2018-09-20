@@ -41,7 +41,8 @@ export default class Home extends Component {
         this.state = {
             user: '',
             publicrepos: 0,
-            showRepos: false
+            showRepos: false,
+            repos_url : ''
         };
     }
 
@@ -69,7 +70,8 @@ export default class Home extends Component {
                 this.setState({
                     user: response.data.login,
                     publicrepos: response.data.public_repos,
-                    avatar: response.data.avatar_url
+                    avatar: response.data.avatar_url,
+                    repos_url: response.data.repos_url
                 });
             }
         );
@@ -110,7 +112,7 @@ export default class Home extends Component {
                 <p>You have a {publicrepos} public repositories</p>
                 <img src={avatar} alt="" />
                 <button onClick={this.handleSubmit}>Show me repos</button>
-                {this.state.showRepos ? <Repositories/> : null}
+                {this.state.showRepos ? <Repositories repos_url={this.state.repos_url}/> : null}
             </div>
         )
     }

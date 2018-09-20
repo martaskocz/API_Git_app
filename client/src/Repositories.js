@@ -12,7 +12,7 @@ export default class Repositories extends Component {
     componentDidMount() {
         const query = window.location.search.substring(1);
         const token = query.split('access_token=')[1];
-        const url = response.data.public_repos;
+        const url = this.props.repos_url;
 
         axios.get(url,
             {
