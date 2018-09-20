@@ -25,18 +25,19 @@ export default class Repositories extends Component {
                 response => {
                     console.log(response);
                     this.setState({
-                        repo: response.data
+                        repo: response.data,
+                        language: response.data.language
                     });
                 }
             );
     }
 
     render () {
-        const result = this.state.repo.map(person => ({ value: person.id, text: person.name }));
+        //const result = this.state.repo.map(person => ({ value: person.id, text: person.name }));
 
         return (
             <li>
-                <div>{result}</div>
+                <div>{language}</div>
             </li>
         )
     }
