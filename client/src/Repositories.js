@@ -21,23 +21,31 @@ export default class Repositories extends Component {
                     Authorization: 'token ' + token
                 }
             })
-            .then(
+            /*.then(
                 response => {
                     console.log(response);
                     this.setState({
                         language: response.data.language
                     });
                 }
+            );*/
+            .then(response => response.json())
+            .then(
+                repo => {
+                    this.setState({
+                        repo: repo
+                    });
+                }
             );
     }
 
     render () {
-        const language = this.state.language;
+        const result = this.state.repo.map(person => ({ value: person.id, text: person.name }));
 
         return (
-            <div>
-                <p>Language is {language}</p>
-            </div>
+            <li>
+                <div>{result}</div>
+            </li>
         )
     }
 }
