@@ -13,14 +13,25 @@ class UserCard extends React.Component {
                 <Card.Content>
                     <Card.Header>{this.props.user}</Card.Header>
                     <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
+                        <span className='date'>Living in {this.props.city}</span>
                     </Card.Meta>
                     <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <a>
+                        <Icon name='star' />
+                        22 Followers
+                    </a>
+                    <br/>
+                    <a>
                         <Icon name='user' />
-                        22 Friends
+                        22 Following
+                    </a>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='folder open' />
+                        {this.props.publicrepos} Public repos
                     </a>
                 </Card.Content>
             </Card>

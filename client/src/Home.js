@@ -12,7 +12,8 @@ export default class Home extends Component {
             user: '',
             publicrepos: 0,
             showRepos: false,
-            repos_url : ''
+            repos_url : '',
+            city: ''
         };
     }
 
@@ -33,7 +34,8 @@ export default class Home extends Component {
                     user: response.data.login,
                     publicrepos: response.data.public_repos,
                     avatar: response.data.avatar_url,
-                    repos_url: response.data.repos_url
+                    repos_url: response.data.repos_url,
+                    city: response.data.location
                 });
             }
         );
@@ -67,6 +69,7 @@ export default class Home extends Component {
         const user = this.state.user;
         const publicrepos = this.state.publicrepos;
         const avatar = this.state.avatar;
+        const city = this.state.city;
         /*const stat = [
             {
                 name: 'Public Repos',
@@ -77,12 +80,9 @@ export default class Home extends Component {
 
         return (
             <div className='button__container'>
-                <p>Hello {user}</p>
-                <p>You have a {publicrepos} public repositories</p>
-                <img src={avatar} alt="" />
                 <button onClick={this.handleSubmit}>Show / Hide repos</button>
                 {this.state.showRepos ? <Repositories repos_url={this.state.repos_url}/> : null}
-                <UserCard avatar={avatar} user={user}/>
+                <UserCard avatar={avatar} user={user} city={city} publicrepos={publicrepos}/>
             </div>
         )
     }
