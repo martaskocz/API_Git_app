@@ -22,6 +22,22 @@ module.exports = {
                         presets: ['react']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            camelCase: true,
+                            sourceMap: true
+                        }
+                    }
+                ]
             }
         ]
     },

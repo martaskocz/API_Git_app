@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router';
 import Repositories from './Repositories';
+import UserCard from "./UserCard";
 
 export default class Home extends Component {
     constructor (props) {
@@ -81,6 +82,7 @@ export default class Home extends Component {
                 <img src={avatar} alt="" />
                 <button onClick={this.handleSubmit}>Show / Hide repos</button>
                 {this.state.showRepos ? <Repositories repos_url={this.state.repos_url}/> : null}
+                <UserCard avatar={avatar} user={user}/>
             </div>
         )
     }
