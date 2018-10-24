@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GitHubLogin from 'react-github-login';
+import {withRouter} from 'react-router-dom'
 
 const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
@@ -12,17 +13,15 @@ function onC() {
     window.open(url, name, specs);
 }
 
-const Login = () => {
+class Login extends React.Component {
+
+    handleSubmit = () => {
+        this.props.history.push('/home')
+    };
+    render(){
     return (
-    /*<GitHubLogin clientId="c5360afa40e2869bcb91" //my ClientID from GitHub
-                 //redirectUri="http://localhost:8080/auth/github/callback"
-                 redirectUri="https://login-git-app.herokuapp.com/auth/github/callback"
-                  //user will be redirected here e.g. http://localhost:8080/users/
-                 onSuccess={onSuccess}
-                 onFailure={onFailure}
-    />*/
-    <a href="https://github.com/login/oauth/authorize?client_id=c5360afa40e2869bcb91&redirect_uri=https://login-git-app.herokuapp.com/auth/github/callback">Login with github</a>
-    );
+        <a onClick={this.handleSubmit}>Login with github</a>
+    )}
 };
 
-export default Login;
+export default withRouter(Login);

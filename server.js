@@ -12,8 +12,8 @@ const clientSecret = 'a738765ecf489aa4395e2322664c2ab9156e0ebe';
 passport.use(new GitHubStrategy({
         clientID: "c5360afa40e2869bcb91",
         clientSecret: "a738765ecf489aa4395e2322664c2ab9156e0ebe",
-        callbackURL: "https://login-git-app.herokuapp.com/auth/github/callback"
-        //callbackURL: "http://localhost:8080/auth/github/callback"
+        //callbackURL: "https://login-git-app.herokuapp.com/auth/github/callback"
+        callbackURL: "http://localhost:8080/auth/github/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
         if (profile) {
@@ -43,7 +43,11 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 // Initialize Passport and restore authentication state, if any, from the
 // session.
 const session = require('express-session');
-app.use(session({secret: "enter custom sessions secret here"}));
+app.use(session({
+    secret: "enter custom sessions secret here",
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

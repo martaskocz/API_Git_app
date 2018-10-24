@@ -3,37 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router';
 import Repositories from './Repositories';
 
-/*const Home = () => {
-    return (
-        <div className="container">
-            <h1>WELCOME</h1>
-        </div>
-    );
-};
-
-export default Home;*/
-
-//solution nr 2
-
-/*export default class Home extends Component {
-
-    componentDidMount() {
-        const url = '/home';
-        window.opener.open(url, '_self');
-        window.opener.focus();
-        window.close();
-    }
-
-    render() {
-        return (
-            <div>
-                AUTH SUCCESS!
-            </div>
-        );
-    }
-}*/
-
-//solution nr3
 export default class Home extends Component {
     constructor (props) {
         super(props);
@@ -47,16 +16,8 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        const query = window.location.search.substring(1);
-        const token = query.split('access_token=')[1];
 
-        axios.get('//api.github.com/user',
-            {
-                headers: {
-                    // Include the token in the Authorization header
-                    Authorization: 'token ' + token
-                }
-            })
+        axios.get('//api.github.com/users/martasobstyl')
             /*.then(response => this.setState({
                 login: response.data.login,
                 name: response.data.name

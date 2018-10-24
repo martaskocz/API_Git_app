@@ -28,7 +28,7 @@ module.exports = {
     resolve: {
         extensions: ['.js'],
     },
-    target: 'node', //needs to be on 'dev' when test on dev server; 'node'
+    //target: 'node', //remember to make it active on Prod
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],
